@@ -6,7 +6,7 @@ pipeline {
         stage("build"){
             steps{
                 echo "Building"
-                bat "mvn -f randomuserprofilefetcher/pom.xml clean package"
+                bat "mvn -f demo/pom.xml clean package"
             }
         }
         stage("accessingEnv"){
@@ -29,7 +29,7 @@ pipeline {
     post {
         success {
             echo "Build succeeded!"
-            archiveArtifacts artifacts: 'randomuserprofilefetcher/target/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'demo/target/*.jar', fingerprint: true
         }
         failure {
             echo "Build failed"
