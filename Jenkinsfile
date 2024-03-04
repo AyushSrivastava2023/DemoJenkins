@@ -1,3 +1,4 @@
+@Library("common-build-lib") _
 pipeline {
     agent any
 
@@ -5,8 +6,9 @@ pipeline {
        
         stage("build"){
             steps{
-                echo "Building"
-                bat "mvn -f demo/pom.xml clean package"
+
+                javaBuild("demo/pom.xml")
+          
             }
         }
         stage("accessingEnv"){
